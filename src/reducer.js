@@ -7,15 +7,17 @@ function reducer(state=[], action){
         return newData
     }
     if(action.type==='complete'){
-        const newData=[]
-        for(let i of state){
-            if(i.id===action.id){
-                newData.push({...i, completed:true})
-            }else{
-                newData.push(i)
-            }
-        }
-        return newData
+        return state.map(item=>(item.id === action.id ? {...item, completed: true} : item))
+
+        // const newData=[]
+        // for(let i of state){
+        //     if(i.id===action.id){
+        //         newData.push({...i, completed:true})
+        //     }else{
+        //         newData.push(i)
+        //     }
+        // }
+        // return newData
     }
     return state
 }
